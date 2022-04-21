@@ -362,12 +362,215 @@
 # my_arr = ['kuche', 'baba', 'kotka', 'kotka', 'baba', 'dqdo', 'kuche', 'kotka']
 # my_dict0 = {word: my_arr.count(word) for word in my_arr0}
 # print(my_dict0)
+#
+# # TODO something
+# """
+# Get this PULL
+# """
+#
+# """
+# Yes, All done
+# """
+#
+# from math import trunc
+#
+#
+# def trunc(x):
+#     return 'hello baby'
+#
+#
+# from math import trunc
+#
+# print(trunc(4.5))
+# # print(trunc)
+#
+# # help(trunc)
+# import time
+#
+# msg = input('what do ??? : ')
+# time.sleep(3)
+# print(msg)
+#
+# a = 5
+#
+#
+# def azz():
+#     azz2()
+#     azz3()
+#     # azz4()
+#
+#
+# def azz2():
+#     print('azzz2')
+#
+#
+# def azz3():
+#     print('azzz3')
+#
+#
+# azz()
+#
+# real_input = input()
+#
+# a, b = [int(el) for el in real_input[1:-1].split(', ')]
+# c, d = eval(real_input)
+# print(a)
+# print(b)
+# print(c)
+# print(d)
+# print(a == c)
+# print(b == d)
+#
+# a = ' '
+#
+# print('bbbb' if a else 'ccccc')
+#
+# a = {1, 2, 3, 1, 1, 1, 2, 2, 3}
+# print(len(a))
+# print(a.__len__)
+#
+# a = [0, 'kote', 13]
+# b = a[-1] if a else None
+# print(b)
+#
+# while True:
+#     try:
+#         number = int(input('Please, enter a number: '))
+#         break
+#     except ValueError:
+#         print('Oops... Try again, try better... ')
+#
+# # try:
+# #     print 'Hello'
+# # except SyntaxError:
+# #     print('stx err')
+# #
+# # a = 5
+def is_in_range(col, row, n=8):
+    return 0 <= col < n and 0 <= row < n
 
-# TODO something
-"""
-Get this PULL
-"""
 
-"""
-Yes, All done
-"""
+print(is_in_range(3, 2))
+print(is_in_range(8, 2))
+print(is_in_range(11, 2))
+print(is_in_range(-3, 2))
+print(is_in_range(4, 3, 6))
+print(is_in_range(3, 2, 2))
+print(is_in_range(-3, 2, 12))
+print(is_in_range(10, 10, 12))
+
+a = [1, 2, 3, 4, 5]
+
+for i in range(5):
+    b = a[0]
+    print(b)
+    # print(a[1]) #IndexError
+
+    a = a[1:]
+    print(a)
+    print('---------')
+
+a = None or []
+print(a)
+
+a = {'baby': 'ines', 'b_fam': 'ivanova', 'cac': 'aca'}
+print(a['baby'])
+
+class AreWe:
+    text_a = 'helllooo'
+
+    def some_func_a(self):
+        return 42
+
+
+b = AreWe()
+print(b.some_func_a())
+print(b.some_func_a)
+print(b.text_a)
+
+a = []
+print(not any(a))
+print(len(a) == 0)
+a.append(3)
+a.append(33)
+print(not any(a))
+print(len(a) == 0)
+
+class A:
+    def __init__(self, name, age):
+        self.name = name
+        self.set_age(age)
+        self.__age = self.get_age()
+
+    def set_age(self, age):
+        self.__age = age
+
+    def get_age(self):
+        return self.__age
+
+
+a = A('tosho', 44)
+print(a.get_age())
+
+class A:
+    def __init__(self, name):
+        self.name = name
+
+    def __str__(self):
+        return f'I am {self.name}'
+
+
+a1 = A('pesho')
+a2 = A('tosho')
+a3 = A('gosho')
+a4 = A('bosho')
+
+list_a = [a1, a2, a3, a4]
+print([str(el) for el in list_a])
+
+del a3
+print([str(el) for el in list_a])
+
+list_b = [el for el in list_a if not el.name == 'gosho']
+print([str(el) for el in list_b])
+
+print([str(el) for el in list_a])
+list_a.remove(a2)
+print([str(el) for el in list_a])
+
+class A:
+    pass
+
+
+class B(A):
+    pass
+
+
+class C(B):
+    pass
+
+
+class D(A):
+    pass
+
+
+a = A()
+b = B()
+c = C()
+d = D()
+
+print(isinstance(a, A))
+print(isinstance(a, B))
+print('---------')
+print(isinstance(b, A))
+print(isinstance(b, B))
+print('---------')
+print(isinstance(c, A))
+print(isinstance(c, B))
+print(isinstance(c, C))
+print('---------')
+print(c.__class__.__name__ == A.__name__)
+print(c.__class__.__name__ == B.__name__)
+print(c.__class__.__name__ == C.__name__)
+print('---------')
+print(isinstance(c, object))
