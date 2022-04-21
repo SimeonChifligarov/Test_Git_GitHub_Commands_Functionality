@@ -362,3 +362,9 @@ my_arr0 = ['kuche', 'kotka']
 my_arr = ['kuche', 'baba', 'kotka', 'kotka', 'baba', 'dqdo', 'kuche', 'kotka']
 my_dict0 = {word: my_arr.count(word) for word in my_arr0}
 print(my_dict0)
+
+# TODO something
+"""
+Get this PULL
+"""
+
