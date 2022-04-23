@@ -446,131 +446,284 @@
 # #     print('stx err')
 # #
 # # a = 5
-def is_in_range(col, row, n=8):
-    return 0 <= col < n and 0 <= row < n
+# def is_in_range(col, row, n=8):
+#     return 0 <= col < n and 0 <= row < n
+#
+#
+# print(is_in_range(3, 2))
+# print(is_in_range(8, 2))
+# print(is_in_range(11, 2))
+# print(is_in_range(-3, 2))
+# print(is_in_range(4, 3, 6))
+# print(is_in_range(3, 2, 2))
+# print(is_in_range(-3, 2, 12))
+# print(is_in_range(10, 10, 12))
+#
+# a = [1, 2, 3, 4, 5]
+#
+# for i in range(5):
+#     b = a[0]
+#     print(b)
+#     # print(a[1]) #IndexError
+#
+#     a = a[1:]
+#     print(a)
+#     print('---------')
+#
+# a = None or []
+# print(a)
+#
+# a = {'baby': 'ines', 'b_fam': 'ivanova', 'cac': 'aca'}
+# print(a['baby'])
+#
+# class AreWe:
+#     text_a = 'helllooo'
+#
+#     def some_func_a(self):
+#         return 42
+#
+#
+# b = AreWe()
+# print(b.some_func_a())
+# print(b.some_func_a)
+# print(b.text_a)
+#
+# a = []
+# print(not any(a))
+# print(len(a) == 0)
+# a.append(3)
+# a.append(33)
+# print(not any(a))
+# print(len(a) == 0)
+#
+# class A:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.set_age(age)
+#         self.__age = self.get_age()
+#
+#     def set_age(self, age):
+#         self.__age = age
+#
+#     def get_age(self):
+#         return self.__age
+#
+#
+# a = A('tosho', 44)
+# print(a.get_age())
+#
+# class A:
+#     def __init__(self, name):
+#         self.name = name
+#
+#     def __str__(self):
+#         return f'I am {self.name}'
+#
+#
+# a1 = A('pesho')
+# a2 = A('tosho')
+# a3 = A('gosho')
+# a4 = A('bosho')
+#
+# list_a = [a1, a2, a3, a4]
+# print([str(el) for el in list_a])
+#
+# del a3
+# print([str(el) for el in list_a])
+#
+# list_b = [el for el in list_a if not el.name == 'gosho']
+# print([str(el) for el in list_b])
+#
+# print([str(el) for el in list_a])
+# list_a.remove(a2)
+# print([str(el) for el in list_a])
+#
+# class A:
+#     pass
+#
+#
+# class B(A):
+#     pass
+#
+#
+# class C(B):
+#     pass
+#
+#
+# class D(A):
+#     pass
+#
+#
+# a = A()
+# b = B()
+# c = C()
+# d = D()
+#
+# print(isinstance(a, A))
+# print(isinstance(a, B))
+# print('---------')
+# print(isinstance(b, A))
+# print(isinstance(b, B))
+# print('---------')
+# print(isinstance(c, A))
+# print(isinstance(c, B))
+# print(isinstance(c, C))
+# print('---------')
+# print(c.__class__.__name__ == A.__name__)
+# print(c.__class__.__name__ == B.__name__)
+# print(c.__class__.__name__ == C.__name__)
+# print('---------')
+# print(isinstance(c, object))
+
+a = [1, 2, 3, 4, 5, 6]
+iter_a = iter(a)
+print(iter_a)
+
+while True:
+    try:
+        element = next(iter_a)
+        print(element)
+        # print(iter_a)
+    except StopIteration:
+        break
+
+print(iter_a)
+
+iter_b = iter(a)
+
+print(iter_b)
+
+class custom_range:
+    # def custom_range(start, end):
+    # return range(start, end + 1)
+
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+        self.current = self.start
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        # if self.current <= self.end:
+        #     real_current = self.current
+        #     self.current += 1
+        #     return real_current
+        # else:
+        #     self.current = self.start
+        #     raise StopIteration
+        if self.end < self.current:
+            self.current = self.start
+            raise StopIteration
+
+        self.current += 1
+        return self.current - 1
 
 
-print(is_in_range(3, 2))
-print(is_in_range(8, 2))
-print(is_in_range(11, 2))
-print(is_in_range(-3, 2))
-print(is_in_range(4, 3, 6))
-print(is_in_range(3, 2, 2))
-print(is_in_range(-3, 2, 12))
-print(is_in_range(10, 10, 12))
+one_to_ten = custom_range(1, 5)
+for num in one_to_ten:
+    print(num)
 
-a = [1, 2, 3, 4, 5]
+for num in one_to_ten:
+    print(num)
 
-for i in range(5):
-    b = a[0]
-    print(b)
-    # print(a[1]) #IndexError
+def next_nums(n):
+    num = 0
+    while num < n:
+        yield num
+        num += 1
 
-    a = a[1:]
-    print(a)
-    print('---------')
 
-a = None or []
+a = next_nums(5)
+
+for el in a:
+    print(el)
+print('-----')
+for el in a:
+    print(el)
+
+def some_func(goss, *args, **kwargs):
+    print(goss)
+    # print(kwargs['goss'])
+    print(args)
+    print(kwargs)
+    return 'done'
+
+
+a = some_func(boss='toss', goss='ross', pros='pros')
 print(a)
 
-a = {'baby': 'ines', 'b_fam': 'ivanova', 'cac': 'aca'}
-print(a['baby'])
-
-class AreWe:
-    text_a = 'helllooo'
-
-    def some_func_a(self):
-        return 42
+from time import time
 
 
-b = AreWe()
-print(b.some_func_a())
-print(b.some_func_a)
-print(b.text_a)
+def time_measure(func):
+    def wrapper(*args, **kwargs):
+        start = time()
+        result = func(*args, **kwargs)
+        end = time()
+        time_needed = end - start
+        print(time_needed)
+        return result
 
-a = []
-print(not any(a))
-print(len(a) == 0)
-a.append(3)
-a.append(33)
-print(not any(a))
-print(len(a) == 0)
-
-class A:
-    def __init__(self, name, age):
-        self.name = name
-        self.set_age(age)
-        self.__age = self.get_age()
-
-    def set_age(self, age):
-        self.__age = age
-
-    def get_age(self):
-        return self.__age
+    return wrapper
 
 
-a = A('tosho', 44)
-print(a.get_age())
-
-class A:
-    def __init__(self, name):
-        self.name = name
-
-    def __str__(self):
-        return f'I am {self.name}'
+@time_measure
+def calculate_sum_of_one_to_hundred():
+    my_list = [num for num in range(1_000_000)]
+    result = sum(my_list)
+    return result
 
 
-a1 = A('pesho')
-a2 = A('tosho')
-a3 = A('gosho')
-a4 = A('bosho')
-
-list_a = [a1, a2, a3, a4]
-print([str(el) for el in list_a])
-
-del a3
-print([str(el) for el in list_a])
-
-list_b = [el for el in list_a if not el.name == 'gosho']
-print([str(el) for el in list_b])
-
-print([str(el) for el in list_a])
-list_a.remove(a2)
-print([str(el) for el in list_a])
-
-class A:
-    pass
+print(calculate_sum_of_one_to_hundred())
 
 
-class B(A):
-    pass
+def repeat(n):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for _ in range(n):
+                func(*args, **kwargs)
+
+        return wrapper
+
+    return decorator
 
 
-class C(B):
-    pass
+@repeat(5)
+def say_hi():
+    print("hello there")
 
 
-class D(A):
-    pass
+say_hi()
 
 
-a = A()
-b = B()
-c = C()
-d = D()
+class Fibonacci:
+    def __init__(self):
+        self.cache = {0: 0, 1: 1}
 
-print(isinstance(a, A))
-print(isinstance(a, B))
-print('---------')
-print(isinstance(b, A))
-print(isinstance(b, B))
-print('---------')
-print(isinstance(c, A))
-print(isinstance(c, B))
-print(isinstance(c, C))
-print('---------')
-print(c.__class__.__name__ == A.__name__)
-print(c.__class__.__name__ == B.__name__)
-print(c.__class__.__name__ == C.__name__)
-print('---------')
-print(isinstance(c, object))
+    def __call__(self, n):
+        # if n not in self.cache:
+        #     if n == 0 or n == 1:
+        #         self.cache[n] = n
+        #     else:
+        #         self.cache[n] = self(n - 1) + self(n - 2)
+        #
+        # return self.cache[n]
+
+        if n not in self.cache:
+            for i in range(2, n + 1):
+                if i not in self.cache:
+                    self.cache[i] = self.cache[i - 1] + self.cache[i - 2]
+
+        return self.cache[n]
+
+
+fib = Fibonacci()
+
+# for i in range(6):
+#     print(fib(i))
+
+print(fib(8))
+print(fib(6))
+print(fib.cache)
