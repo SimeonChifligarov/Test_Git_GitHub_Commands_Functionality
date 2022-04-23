@@ -574,156 +574,160 @@
 # print(c.__class__.__name__ == C.__name__)
 # print('---------')
 # print(isinstance(c, object))
+#
+# a = [1, 2, 3, 4, 5, 6]
+# iter_a = iter(a)
+# print(iter_a)
+#
+# while True:
+#     try:
+#         element = next(iter_a)
+#         print(element)
+#         # print(iter_a)
+#     except StopIteration:
+#         break
+#
+# print(iter_a)
+#
+# iter_b = iter(a)
+#
+# print(iter_b)
+#
+# class custom_range:
+#     # def custom_range(start, end):
+#     # return range(start, end + 1)
+#
+#     def __init__(self, start, end):
+#         self.start = start
+#         self.end = end
+#         self.current = self.start
+#
+#     def __iter__(self):
+#         return self
+#
+#     def __next__(self):
+#         # if self.current <= self.end:
+#         #     real_current = self.current
+#         #     self.current += 1
+#         #     return real_current
+#         # else:
+#         #     self.current = self.start
+#         #     raise StopIteration
+#         if self.end < self.current:
+#             self.current = self.start
+#             raise StopIteration
+#
+#         self.current += 1
+#         return self.current - 1
+#
+#
+# one_to_ten = custom_range(1, 5)
+# for num in one_to_ten:
+#     print(num)
+#
+# for num in one_to_ten:
+#     print(num)
+#
+# def next_nums(n):
+#     num = 0
+#     while num < n:
+#         yield num
+#         num += 1
+#
+#
+# a = next_nums(5)
+#
+# for el in a:
+#     print(el)
+# print('-----')
+# for el in a:
+#     print(el)
+#
+# def some_func(goss, *args, **kwargs):
+#     print(goss)
+#     # print(kwargs['goss'])
+#     print(args)
+#     print(kwargs)
+#     return 'done'
+#
+#
+# a = some_func(boss='toss', goss='ross', pros='pros')
+# print(a)
+#
+# from time import time
+#
+#
+# def time_measure(func):
+#     def wrapper(*args, **kwargs):
+#         start = time()
+#         result = func(*args, **kwargs)
+#         end = time()
+#         time_needed = end - start
+#         print(time_needed)
+#         return result
+#
+#     return wrapper
+#
+#
+# @time_measure
+# def calculate_sum_of_one_to_hundred():
+#     my_list = [num for num in range(1_000_000)]
+#     result = sum(my_list)
+#     return result
+#
+#
+# print(calculate_sum_of_one_to_hundred())
+#
+#
+# def repeat(n):
+#     def decorator(func):
+#         def wrapper(*args, **kwargs):
+#             for _ in range(n):
+#                 func(*args, **kwargs)
+#
+#         return wrapper
+#
+#     return decorator
+#
+#
+# @repeat(5)
+# def say_hi():
+#     print("hello there")
+#
+#
+# say_hi()
+#
+#
+# class Fibonacci:
+#     def __init__(self):
+#         self.cache = {0: 0, 1: 1}
+#
+#     def __call__(self, n):
+#         # if n not in self.cache:
+#         #     if n == 0 or n == 1:
+#         #         self.cache[n] = n
+#         #     else:
+#         #         self.cache[n] = self(n - 1) + self(n - 2)
+#         #
+#         # return self.cache[n]
+#
+#         if n not in self.cache:
+#             for i in range(2, n + 1):
+#                 if i not in self.cache:
+#                     self.cache[i] = self.cache[i - 1] + self.cache[i - 2]
+#
+#         return self.cache[n]
+#
+#
+# fib = Fibonacci()
+#
+# # for i in range(6):
+# #     print(fib(i))
+#
+# print(fib(8))
+# print(fib(6))
+# print(fib.cache)
 
-a = [1, 2, 3, 4, 5, 6]
-iter_a = iter(a)
-print(iter_a)
-
-while True:
-    try:
-        element = next(iter_a)
-        print(element)
-        # print(iter_a)
-    except StopIteration:
-        break
-
-print(iter_a)
-
-iter_b = iter(a)
-
-print(iter_b)
-
-class custom_range:
-    # def custom_range(start, end):
-    # return range(start, end + 1)
-
-    def __init__(self, start, end):
-        self.start = start
-        self.end = end
-        self.current = self.start
-
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        # if self.current <= self.end:
-        #     real_current = self.current
-        #     self.current += 1
-        #     return real_current
-        # else:
-        #     self.current = self.start
-        #     raise StopIteration
-        if self.end < self.current:
-            self.current = self.start
-            raise StopIteration
-
-        self.current += 1
-        return self.current - 1
-
-
-one_to_ten = custom_range(1, 5)
-for num in one_to_ten:
-    print(num)
-
-for num in one_to_ten:
-    print(num)
-
-def next_nums(n):
-    num = 0
-    while num < n:
-        yield num
-        num += 1
-
-
-a = next_nums(5)
-
-for el in a:
-    print(el)
-print('-----')
-for el in a:
-    print(el)
-
-def some_func(goss, *args, **kwargs):
-    print(goss)
-    # print(kwargs['goss'])
-    print(args)
-    print(kwargs)
-    return 'done'
-
-
-a = some_func(boss='toss', goss='ross', pros='pros')
-print(a)
-
-from time import time
-
-
-def time_measure(func):
-    def wrapper(*args, **kwargs):
-        start = time()
-        result = func(*args, **kwargs)
-        end = time()
-        time_needed = end - start
-        print(time_needed)
-        return result
-
-    return wrapper
-
-
-@time_measure
-def calculate_sum_of_one_to_hundred():
-    my_list = [num for num in range(1_000_000)]
-    result = sum(my_list)
-    return result
-
-
-print(calculate_sum_of_one_to_hundred())
-
-
-def repeat(n):
-    def decorator(func):
-        def wrapper(*args, **kwargs):
-            for _ in range(n):
-                func(*args, **kwargs)
-
-        return wrapper
-
-    return decorator
-
-
-@repeat(5)
-def say_hi():
-    print("hello there")
-
-
-say_hi()
-
-
-class Fibonacci:
-    def __init__(self):
-        self.cache = {0: 0, 1: 1}
-
-    def __call__(self, n):
-        # if n not in self.cache:
-        #     if n == 0 or n == 1:
-        #         self.cache[n] = n
-        #     else:
-        #         self.cache[n] = self(n - 1) + self(n - 2)
-        #
-        # return self.cache[n]
-
-        if n not in self.cache:
-            for i in range(2, n + 1):
-                if i not in self.cache:
-                    self.cache[i] = self.cache[i - 1] + self.cache[i - 2]
-
-        return self.cache[n]
-
-
-fib = Fibonacci()
-
-# for i in range(6):
-#     print(fib(i))
-
-print(fib(8))
-print(fib(6))
-print(fib.cache)
+"""
+I am DONE Here
+"""
