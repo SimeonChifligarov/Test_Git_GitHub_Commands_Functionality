@@ -959,3 +959,277 @@
 # copied_dict = my_dict.copy()
 # print(my_dict == copied_dict)
 # print(id(my_dict) == id(copied_dict))
+
+
+def some_func():
+    return 10
+
+
+print(isinstance(some_func, object))
+print(isinstance(1, object))
+
+
+def some_funkz(**kwargs):
+    print(kwargs)
+
+
+some_funkz(pesho='gosho')
+some_funkz()
+some_funkz(**{'zaz': '11', 'dad': '22'})
+
+text = 'abra kadabra sim salabim ama kakvo se sluchva tuka ve omgggg'
+a = 6
+print(text)
+print(text[3: a + 1])
+print(text)
+b = [1, 2, 3]
+a = (b, 5, 'kami')
+
+print(a)
+b.append(44)
+b.append(66)
+print(a)
+print(a[0][2])
+print(a.count(666))
+print(a.__len__())
+print(len(a))
+
+# print(a.index(44))  # ValueError: x not in tuple
+
+a = [1, 2, 3, 4]
+b, c, d, e = a
+print(b, c, d, e)
+
+a = [1, 2, 3, 4, 5]
+b = [a, ['a', 'b', 'c', 'd', 'e']]
+print(b)
+a.append(b)
+print(a[5] == a[5][0][5])
+print(b)
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+print([j for j in matrix] == matrix)
+for line in matrix:
+    # [print(num, end=" ") for num in line]
+    # print()
+    print(*line, sep=", ")
+
+a = 1
+print(type(a))
+print(type(a) == int)
+print(isinstance(a, int))
+print('------')
+print(type(a) == object)
+print(isinstance(a, object))
+
+a = list(range(5))
+b = [range(5)]
+print(a)
+print(b)
+print(a == b)  # False
+
+my_dict = {'Peter': 21, 'George': 18, 'John': 45}
+print(dict(sorted(my_dict.items())))
+print(sorted(my_dict.items()))
+print(dict(sorted(my_dict.items())) == my_dict)
+print(sorted((1, 2, 11, 3, -2, 55, 4, -33)))
+
+
+# TODO checkout this example!!!
+# Python function to print permutations of a given list
+def permutation(lst):
+    # If lst is empty then there are no permutations
+    if len(lst) == 0:
+        return []
+
+    # If there is only one element in lst then, only
+    # one permutation is possible
+    if len(lst) == 1:
+        return [lst]
+
+    # Find the permutations for lst if there are
+    # more than 1 characters
+
+    ll = []  # empty list that will store current permutation
+
+    # Iterate the input(lst) and calculate the permutation
+    for i in range(len(lst)):
+        m = lst[i]
+
+        # Extract lst[i] or m from the list.  remLst is
+        # remaining list
+        rem_lst = lst[:i] + lst[i + 1:]
+
+        # Generating all permutations where m is first
+        # element
+        for perm in permutation(rem_lst):
+            ll.append([m] + perm)
+    return ll
+
+
+# Driver program to test above function
+data = list('123')
+for p in permutation(data):
+    print(p)
+
+
+class X:
+    def __init__(self):
+        pass
+
+    def some_method(self):
+        return 22
+
+
+x1 = X()
+x2 = X()
+x3 = X()
+
+print(id(x1))
+print(id(x1) == id(x2))
+
+
+class Phone:
+    some_attr = 666
+
+    def __init__(self, color, size):
+        self.color = color
+        self.size = size
+
+    @staticmethod
+    def turn_on():
+        return 'The phone is turned on'
+
+    def __str__(self):
+        return f'phone = color: {self.color}, size: {self.size}'
+
+    def __call__(self, *args, **kwargs):
+        return f'{self.size + 10_000}'
+
+    # def __repr__(self):
+    #     return 111
+
+
+# e = Phone('blue', 13)
+# print(e)
+#
+# d = Phone(size=44, color='red')
+# # print(d)
+# # print(type(d))
+# # print(d.turn_on())
+# # print(d.turn_on)  # if __repr__ (instead of __str__) => diff print
+# # # f = Phone.__init__(f, 'yellow', 9) # Error
+# # # print(f)
+# # print(d())
+# # print(d.__dict__)
+# print(Phone.__dict__)
+# print(e.__dict__)
+# # print(Phone.__doc__)
+# print('----------------')
+
+
+class Car:
+    def __init__(self):
+        self.__max_speed = 200
+
+    def drive(self):
+        print('driving max speed ' + str(self.__max_speed))
+
+
+red_car = Car()
+red_car.drive()  # driving max speed 200
+red_car.__max_speed = 10  # won't change because it is name mangled
+red_car.drive()
+print(red_car.__dict__)
+print(type(red_car.__dict__))
+
+
+class Phone:
+    def __delattr__(self, attr):
+        del self.__dict__[attr]
+        print(f"'{str(attr)}' was deleted")
+
+
+phone = Phone()
+# phone.color = 'black'
+# del phone.color  # 'color' was deleted
+print(type(phone))
+print(type(phone) == Phone)
+print(type(phone) != Phone)
+print(type(phone) is Phone)
+print(type(phone) is not Phone)
+
+a = {'bab': 'bal', 'cac': 'cal', 'zaz': 'zal'}
+print(a)
+del a['cac']
+print(a)
+a.pop('zaz')
+print(a)
+
+
+# yield = 11 # SyntaxError -> assignment to yield exp not possible
+# print(yield)
+
+
+def some_func():
+    a = 2
+    if a:
+        yield 11
+
+
+import this
+
+print(any)
+any = 22
+print(any)
+
+
+def some_func_z():
+    return 5
+
+
+def my_funk():
+    return 12
+
+
+print(some_func_z())
+a = 12
+
+if a > 10:
+    some_func_z = my_funk
+
+print(some_func_z())
+
+
+# TODO check it
+class Phone:
+    def __init__(self, size):
+        self.size = size
+
+    def __getattr__(self, attr):
+        return None
+
+    def __setattr__(self, attr, value):
+        self.__dict__[attr] = value.upper()
+
+    def __delattr__(self, attr):
+        del self.__dict__[attr]
+        print(f"'{str(attr)}' was deleted")
+
+
+#
+# phone = Phone(55)
+# # phone.size = 44
+# print(phone.color)
+# print(getattr(phone, 'size'))
+# print(getattr(phone, 'color', 'no idea'))  # None
+
+phone = Phone('levski ale ale')
+
+print(phone)
+print(phone.__dict__)
+print(phone.__dir__())
+# phone.size = 44
+print(phone.color)
+print(getattr(phone, 'size'))
+print(getattr(phone, 'color', 'no idea'))  # None
