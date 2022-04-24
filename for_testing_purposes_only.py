@@ -724,238 +724,238 @@
 # print(fib(6))
 # print(fib.cache)
 #
-
-class func_logger:
-    _logfile = 'out.log'
-
-    def __init__(self, func):
-        self.func = func
-
-    def __call__(self, *args, **kwargs):
-        log_string = self.func.__name__ + ' was called'
-        with open(self._logfile, 'a') as opened_file:
-            opened_file.write(log_string + '\n')
-        return self.func(*args, **kwargs)
-
-
-@func_logger
-def say_hi(name):
-    print(f'Hi, {name}!')
-
-
-say_hi('Peter')
-
-
-def some_func(*args, **kwargs):
-    print(args)
-    print(*args)
-    print('----')
-    print(kwargs)
-    # print(**kwargs)
-    print('; '.join([f'key: {key}, value: {value}' for key, value in kwargs.items()]))
-
-
-# some_func(1, 3, 4, 5, b=10, d=15)
-some_func(1, 3, 4, 5, **{'b': 10, 'd': 15})
-
-a = [1, 2, 3, 3, 4, 5, 3, 2, 100, 1000]
-print(a)
-
-del a[len(a) - 2]
-print(a)
-
-b = {'baba': 'lada', 'kaka': 'lambo', 'lele': 'male'}
-print(b)
-
-del b['kaka']
-print(b)
-
-a = [1, 2, 'baba']
-if a == [1, 2, 'baba']:
-    print('yeah')
-else:
-    print('naah')
-
-
-class A:
-    def __init__(self):
-        self.__d = None
-        self.a = 1
-        self.b = 2
-        self.c = 'baba'
-
-    @property
-    def d(self):
-        return self.__d
-
-    @d.setter
-    def d(self, value):
-        self.__d = value
-
-    def some_a(self):
-        return self
-
-    def some_b(self):
-        return self
-
-    def some_c(self):
-        return self
-
-    @staticmethod
-    def some_d():
-        return
-
-    @classmethod
-    def some_e(cls):
-        return cls
-
-
-print(A.mro())
-
-a = A()
-print(a.__class__.mro())
-print(a.__dict__)
-print(dir(A))
-print(dir(a))
-a.d = 5
-print(a.__dict__)
-print(dir(a))
-print([el for el in dir(a) if not el.startswith('__')])
-print([el for el in dir(a) if not (el.startswith('__') or callable(getattr(a, el)))])
-print([el for el in dir(a) if (not el.startswith('__') and callable(getattr(a, el)))])
-# print([el for el in [el for el in dir(a) if (not el.startswith('__'))] if not callable(getattr(a, el))])
-
-print(id(a), a)
-print(id(A), A)
-
-
-def func_a():
-    return func_a
-
-
-b = func_a()
-print(b.__dir__)
-print(b.__class__)
-print(b.__class__.mro())
-
-
-def func_b():
-    return
-
-
-print(func_b.__class__.mro())
-
-a = [1, 2, 3, 4]
-a.insert(100, 55)
-print(a)
-a.insert(-2, 44)
-print(a)
-a.insert(-200, 33)
-print(a)
-
-a = [1, 2, 3, 4]
-b = [1, 2, 3]
-b.append(4)
-c = [2, 3, 4, 1]
-d = a
-
-print(a == b)
-print(a == c)
-print(a == d)
-
-print('--------')
-print(id(a) == id(b))
-print(id(a) == id(d))
-
-a = 'some text 11'
-print(len(a))
-
-
-class A:
-    def __init__(self):
-        pass
-
-
-t1 = (4, 5, 6)
-a1 = list(t1)
-a2 = [4, 5, 6]
-a3 = [*t1]
-print(a1)
-print(a2)
-print(a3)
-print(a1 == a3)
-
-print('----------')
-
-
-def some_func_a(number, batka, zadka):
-    return f'my number is {number}, batka: {batka}, zadka: {zadka}'
-
-
-print(some_func_a(2, batka='sasa', zadka=44))
-print(some_func_a(2, zadka='sasa', batka=44))
-print(some_func_a(zadka=2, batka='sasa', number=44))
-print(some_func_a(**{'batka': 22, 'zadka': 33, 'number': 'kaka'}))
-# print(dict(zadka=2, batka='sasa', number=44))
-
-
-print(range(2, 13))
-print(range(2, 13, 3).__class__.mro())
-print(type(range(2, 13, 3)))
-print(list(range(4, 9)))
-
-
-class A:
-    def __init__(self):
-        self.mama = 'mama'
-        self.baba = 22
-
-
-c = A()
-b = {'dom': {'nice': 'one', 'bad': 'two'}, 2: 2}
-a = {'kol': 13, 'bol': {'some': 1, 'any': 2, 'done': 55}, 'b_obj': b, 'c_obj': c}
-d = 'kol'
-print(a['kol'])
-print(a[d])
-print(a)
-print(a.__class__.mro())
-print('--------')
-
-print(a['c_obj'])
-print(a['c_obj'].mama)
-print(a['c_obj'].baba)
-
-
-def func_a(kakvo, **kwargs):
-    pass
-
-
-def func_a(**kwargs):
-    print(kwargs['gosho'])
-
-
-func_a(instance=15, bobo=3, gosho='omg', kakvo='pazzz')
-
-a = 5
-
-a = 'PetarStoyanov'
-print(a)
-# a[2] = 'g'  # TypeError: 'str' object does not support item assignment
-print(a)
-
-x = lambda a: a + 10
-print(x)
-
-my_list = [1, 2, 3, 2, 2]
-# last = my_list.index(22) # ValueError: 22 is not in list
-# print(last)  # ValueError
-
-ala_bala = {'ala': 'ala1', 'bala': 'bala2', 'cala': 'cala3'}
-print(ala_bala.keys())
-print(ala_bala.values())
-print(ala_bala.items())
-
-my_dict = {1: 'apple', 2: 'banana'}
-copied_dict = my_dict.copy()
-print(my_dict == copied_dict)
-print(id(my_dict) == id(copied_dict))
+#
+# class func_logger:
+#     _logfile = 'out.log'
+#
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, *args, **kwargs):
+#         log_string = self.func.__name__ + ' was called'
+#         with open(self._logfile, 'a') as opened_file:
+#             opened_file.write(log_string + '\n')
+#         return self.func(*args, **kwargs)
+#
+#
+# @func_logger
+# def say_hi(name):
+#     print(f'Hi, {name}!')
+#
+#
+# say_hi('Peter')
+#
+#
+# def some_func(*args, **kwargs):
+#     print(args)
+#     print(*args)
+#     print('----')
+#     print(kwargs)
+#     # print(**kwargs)
+#     print('; '.join([f'key: {key}, value: {value}' for key, value in kwargs.items()]))
+#
+#
+# # some_func(1, 3, 4, 5, b=10, d=15)
+# some_func(1, 3, 4, 5, **{'b': 10, 'd': 15})
+#
+# a = [1, 2, 3, 3, 4, 5, 3, 2, 100, 1000]
+# print(a)
+#
+# del a[len(a) - 2]
+# print(a)
+#
+# b = {'baba': 'lada', 'kaka': 'lambo', 'lele': 'male'}
+# print(b)
+#
+# del b['kaka']
+# print(b)
+#
+# a = [1, 2, 'baba']
+# if a == [1, 2, 'baba']:
+#     print('yeah')
+# else:
+#     print('naah')
+#
+#
+# class A:
+#     def __init__(self):
+#         self.__d = None
+#         self.a = 1
+#         self.b = 2
+#         self.c = 'baba'
+#
+#     @property
+#     def d(self):
+#         return self.__d
+#
+#     @d.setter
+#     def d(self, value):
+#         self.__d = value
+#
+#     def some_a(self):
+#         return self
+#
+#     def some_b(self):
+#         return self
+#
+#     def some_c(self):
+#         return self
+#
+#     @staticmethod
+#     def some_d():
+#         return
+#
+#     @classmethod
+#     def some_e(cls):
+#         return cls
+#
+#
+# print(A.mro())
+#
+# a = A()
+# print(a.__class__.mro())
+# print(a.__dict__)
+# print(dir(A))
+# print(dir(a))
+# a.d = 5
+# print(a.__dict__)
+# print(dir(a))
+# print([el for el in dir(a) if not el.startswith('__')])
+# print([el for el in dir(a) if not (el.startswith('__') or callable(getattr(a, el)))])
+# print([el for el in dir(a) if (not el.startswith('__') and callable(getattr(a, el)))])
+# # print([el for el in [el for el in dir(a) if (not el.startswith('__'))] if not callable(getattr(a, el))])
+#
+# print(id(a), a)
+# print(id(A), A)
+#
+#
+# def func_a():
+#     return func_a
+#
+#
+# b = func_a()
+# print(b.__dir__)
+# print(b.__class__)
+# print(b.__class__.mro())
+#
+#
+# def func_b():
+#     return
+#
+#
+# print(func_b.__class__.mro())
+#
+# a = [1, 2, 3, 4]
+# a.insert(100, 55)
+# print(a)
+# a.insert(-2, 44)
+# print(a)
+# a.insert(-200, 33)
+# print(a)
+#
+# a = [1, 2, 3, 4]
+# b = [1, 2, 3]
+# b.append(4)
+# c = [2, 3, 4, 1]
+# d = a
+#
+# print(a == b)
+# print(a == c)
+# print(a == d)
+#
+# print('--------')
+# print(id(a) == id(b))
+# print(id(a) == id(d))
+#
+# a = 'some text 11'
+# print(len(a))
+#
+#
+# class A:
+#     def __init__(self):
+#         pass
+#
+#
+# t1 = (4, 5, 6)
+# a1 = list(t1)
+# a2 = [4, 5, 6]
+# a3 = [*t1]
+# print(a1)
+# print(a2)
+# print(a3)
+# print(a1 == a3)
+#
+# print('----------')
+#
+#
+# def some_func_a(number, batka, zadka):
+#     return f'my number is {number}, batka: {batka}, zadka: {zadka}'
+#
+#
+# print(some_func_a(2, batka='sasa', zadka=44))
+# print(some_func_a(2, zadka='sasa', batka=44))
+# print(some_func_a(zadka=2, batka='sasa', number=44))
+# print(some_func_a(**{'batka': 22, 'zadka': 33, 'number': 'kaka'}))
+# # print(dict(zadka=2, batka='sasa', number=44))
+#
+#
+# print(range(2, 13))
+# print(range(2, 13, 3).__class__.mro())
+# print(type(range(2, 13, 3)))
+# print(list(range(4, 9)))
+#
+#
+# class A:
+#     def __init__(self):
+#         self.mama = 'mama'
+#         self.baba = 22
+#
+#
+# c = A()
+# b = {'dom': {'nice': 'one', 'bad': 'two'}, 2: 2}
+# a = {'kol': 13, 'bol': {'some': 1, 'any': 2, 'done': 55}, 'b_obj': b, 'c_obj': c}
+# d = 'kol'
+# print(a['kol'])
+# print(a[d])
+# print(a)
+# print(a.__class__.mro())
+# print('--------')
+#
+# print(a['c_obj'])
+# print(a['c_obj'].mama)
+# print(a['c_obj'].baba)
+#
+#
+# def func_a(kakvo, **kwargs):
+#     pass
+#
+#
+# def func_a(**kwargs):
+#     print(kwargs['gosho'])
+#
+#
+# func_a(instance=15, bobo=3, gosho='omg', kakvo='pazzz')
+#
+# a = 5
+#
+# a = 'PetarStoyanov'
+# print(a)
+# # a[2] = 'g'  # TypeError: 'str' object does not support item assignment
+# print(a)
+#
+# x = lambda a: a + 10
+# print(x)
+#
+# my_list = [1, 2, 3, 2, 2]
+# # last = my_list.index(22) # ValueError: 22 is not in list
+# # print(last)  # ValueError
+#
+# ala_bala = {'ala': 'ala1', 'bala': 'bala2', 'cala': 'cala3'}
+# print(ala_bala.keys())
+# print(ala_bala.values())
+# print(ala_bala.items())
+#
+# my_dict = {1: 'apple', 2: 'banana'}
+# copied_dict = my_dict.copy()
+# print(my_dict == copied_dict)
+# print(id(my_dict) == id(copied_dict))
