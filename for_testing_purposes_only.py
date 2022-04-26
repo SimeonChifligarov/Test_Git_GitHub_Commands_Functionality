@@ -1234,3 +1234,167 @@
 # print(getattr(phone, 'size'))
 # print(getattr(phone, 'color', 'no idea'))  # None
 #
+a = {11: 'maski', 22: 'padat', 33: 'zverski', 'pazq': 'teb'}
+print(a)
+
+a = [1, 2, 3, 4]
+b = [1, 2, 3, 4]
+print(a == b)
+print(id(a) == id(b))
+
+
+def get_me_x(a):
+    return a + b
+
+
+b = 10
+
+print(get_me_x(11))
+
+print(100 + 22)
+print(1_337_000 + 444)
+print(1_337_000 + 4_3_2)
+# print(1_337_000 + 0_3_2) # not supported
+print(type(2_048))
+
+
+def some_funkzz(arg1, arg2=None, arg3=None):
+    print(arg1)
+    print(arg2)
+    print(arg3)
+    print('----------')
+
+
+some_funkzz('w8', 'whaaat?')
+some_funkzz('w8', arg2='what!!!')
+# some_funkzz('w8', arg4='doesn\'t work')
+some_funkzz('yea', arg3='hit me')
+
+
+# some_funkzz('yea', arg1='hit me one more time') # multiple values for argument 'arg1'
+
+def heavy_calculation(*args):
+    return sum(*args)
+
+
+def calculate(*args, memo={}):
+    arguments = args
+    try:
+        value = memo[arguments]  # return already calculated value
+    except KeyError:
+        value = heavy_calculation(arguments)
+        memo[arguments] = value  # update the memo dictionary
+    return value
+
+
+print(calculate(3, 4, 5))
+print(calculate(3, 2))
+print(calculate(3, 3, 5))
+print(calculate(3, 4, 5))
+print(calculate(3, 2))
+
+START_RANGE_NUMBER = 0
+END_RANGE_NUMBER = 13
+
+result_list = []
+
+for i in range(START_RANGE_NUMBER, END_RANGE_NUMBER + 1):
+    result_list.append(i)
+
+# print(result_list)
+
+result_list_as_string = [str(el) for el in result_list]
+result_string = ''.join(result_list_as_string)
+
+print(result_string)
+
+starting_list = [1, 1, 2, 3, 3]
+
+unique_items_list = [el for el in set(starting_list)]
+
+print(unique_items_list)
+
+NUMBER = 100
+
+
+def is_prime(num):
+    for i in range(2, num):
+        if num % i == 0:
+            return False
+    return True
+
+
+result_list = [num for num in range(1, NUMBER) if is_prime(num)]
+
+print(result_list)
+
+NUMBER = 20
+
+for i in range(1, NUMBER + 1):
+    if i % 3 == 0 and i % 5 == 0:
+        print('FizzBuzz')
+    elif i % 3 == 0:
+        print('Fizz')
+    elif i % 5 == 0:
+        print('Buzz')
+    else:
+        print(i)
+import math
+
+print(-12 % 10)
+# print(math.floor((-12 / 10)))
+print((-12 - (math.floor((-12 / 10)) * 10)) % 10)
+print(12 % -10)
+print((12 - (math.floor((12 / -10)) * -10)) % -10)
+
+# print(-12//10)
+
+list_a = ['a', 'b', 'c', 'd', 'e']
+print(list_a[10:])
+
+
+class Parent:
+    def __init__(self, param):
+        self.v1 = param
+
+
+class Child(Parent):
+    def __init__(self, param):
+        super().__init__(param)
+        self.v2 = param
+
+
+obj = Child('11')
+print(obj.v1 + " " + obj.v2)
+
+x = [[0], [1]]
+print(list(map(str, x)))
+print(' '.join(list(map(str, x))))
+
+print(len(' '.join(list(map(str, x)))))
+
+a = 5
+b = a > 2
+if not a:
+    print(a)
+if b:
+    print(b)
+print(bool(-1))
+name = "George"
+# name[2] = "m"    # TypeError: 'str' object does not support item assignment
+print(name[2])
+
+a = None
+print(a == None)
+
+
+def printText(text):
+    print("I love" + text)
+
+
+printText("Python")
+
+# a = 10
+# b = 20
+# if b > a:
+# print("b is greater") # Indentation Error
