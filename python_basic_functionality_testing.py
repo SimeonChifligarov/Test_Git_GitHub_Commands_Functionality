@@ -85,101 +85,101 @@
 # if a:  # NameError: name 'a' is not defined
 #     print('bob')
 
-a = ()
-b = tuple([])
-c = (1)  # Remove redundant parenthesis
-d = (1,)
-print(a)
-print(b)
-print(c)
-print(d)
-print('----')
-print(type(a))
-print(type(c))
+# a = ()
+# b = tuple([])
+# c = (1)  # Remove redundant parenthesis
+# d = (1,)
+# print(a)
+# print(b)
+# print(c)
+# print(d)
+# print('----')
+# print(type(a))
+# print(type(c))
 
-a = [1, 2, 3, 4, 5, 6, 7]
-print(a[len(a) - 1])
-print(a[-1])
-print(a[-7])
-# print(a[-8])  # IndexError: list index out of range
+# a = [1, 2, 3, 4, 5, 6, 7]
+# print(a[len(a) - 1])
+# print(a[-1])
+# print(a[-7])
+# # print(a[-8])  # IndexError: list index out of range
 
-a = ['a', 'b', 'c', 'd']
+# a = ['a', 'b', 'c', 'd']
 
-for pos, val in enumerate(a):
-    print(pos)
-    print(val)
-    print('---')
+# for pos, val in enumerate(a):
+#     print(pos)
+#     print(val)
+#     print('---')
 
-def some_func_a():
-    a = 5
-
-
-def some_func_b():
-    return
+# def some_func_a():
+#     a = 5
 
 
-print(some_func_a())
-print(some_func_b())
-print('----')
-print(print('----'))
-
-print(type(some_func_b))
-print(some_func_b.__class__.mro())
-
-def a():
-    pass
+# def some_func_b():
+#     return
 
 
-print(a())
+# print(some_func_a())
+# print(some_func_b())
+# print('----')
+# print(print('----'))
 
-def increase_a_by_one(x):
-    x += 1
-    return x
+# print(type(some_func_b))
+# print(some_func_b.__class__.mro())
 
-
-a = 10
-print(a)
-print(increase_a_by_one(a))
-print(a)
-
-def check_func_body():
-    print('pre')
-    raise SyntaxError
-    print('post')
+# def a():
+#     pass
 
 
-#
-#
-# # print('here 1')
+# print(a())
+
+# def increase_a_by_one(x):
+#     x += 1
+#     return x
+
+
+# a = 10
+# print(a)
+# print(increase_a_by_one(a))
+# print(a)
+
+# def check_func_body():
+#     print('pre')
+#     raise SyntaxError
+#     print('post')
+
+
+# #
+# #
+# # # print('here 1')
+# # # check_func_body()
+# # # print('here 2')
+# #
 # # check_func_body()
-# # print('here 2')
-#
-# check_func_body()
-# print('here 3')
+# # print('here 3')
 
-print('no function invocation')  # exit code 0
+# print('no function invocation')  # exit code 0
 
-print(range(10))
-print(type(range(5)))
+# print(range(10))
+# print(type(range(5)))
 
-a = '1azobi4amma4iboza2'
-print(''.join((reversed(a))))
-b = list(a)
-b.reverse()
-print(''.join(b))
-print(a[::-1])
+# a = '1azobi4amma4iboza2'
+# print(''.join((reversed(a))))
+# b = list(a)
+# b.reverse()
+# print(''.join(b))
+# print(a[::-1])
 
-a = [1, 2, 3, 4, 5, 6, 11, 2, 1]
-print(sorted(a))
-print(sorted(a, key=lambda el: -el))
+# a = [1, 2, 3, 4, 5, 6, 11, 2, 1]
+# print(sorted(a))
+# print(sorted(a, key=lambda el: -el))
 
 
-def sorting_func(element):
-    return -element
+# def sorting_func(element):
+#     return -element
 
 
-print('---------')
-print(sorted(a, key=sorting_func))
+# print('---------')
+# print(sorted(a, key=sorting_func))
 
-a = [1, 2, 3, 'abc', 'def', 4, 2, 1, 'a', 'abb']
-print(sorted(a))  # TypeError: '<' not supported between instances of 'str' and 'int'
+# a = [1, 2, 3, 'abc', 'def', 4, 2, 1, 'a', 'abb']
+# print(sorted(a))  # TypeError: '<' not supported between instances of 'str' and 'int'
