@@ -343,125 +343,126 @@
 #     print()
 
 # matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-# print([j for j in matrix] == matrix)  # True.
+# print([j for j in matrix] == matrix)  # True
 
-a = 12
-b = 'baba'
+# a = 12
+# b = 'baba'
 
-print(type(a))
-print(type(a) == int)  # True
-print(a.__class__.__name__)
-print(a.__class__.__name__ == 'int')  # True
-print(a.__class__.__name__ == int)  # False
+# print(type(a))
+# print(type(a) == int)  # True
+# print(a.__class__.__name__)
+# print(a.__class__.__name__ == 'int')  # True
+# print(a.__class__.__name__ == int)  # False
 
-a = [1, 2, 3, 4, 5]
-b = a[:]
-c = a[::-1]
-print(b)
-print(c)
+# a = [1, 2, 3, 4, 5]
+# b = a[:]
+# c = a[::-1]
+# print(b)
+# print(c)
 
-nums_to_hundred = [num for num in range(1, 101)]
-print(nums_to_hundred)
+# nums_to_hundred = [num for num in range(1, 101)]
+# print(nums_to_hundred)
 
-nums = [1, 2, 3, 4, 5, 6]
-filtered1 = [True if x % 2 == 0 else False for x in nums]
-filtered2 = [1 if x % 3 == 0 else 0 for x in nums]
-print(filtered1)
-print(filtered2)
+# nums = [1, 2, 3, 4, 5, 6]
+# filtered1 = [True if x % 2 == 0 else False for x in nums]
+# filtered2 = [1 if x % 3 == 0 else 0 for x in nums]
+# print(filtered1)
+# print(filtered2)
 
-matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-[print(num) for num in [j for j in matrix]]
-[print(*num) for num in [j for j in matrix]]
+# matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+# [print(num) for num in [j for j in matrix]]
+# [print(*num) for num in [j for j in matrix]]
 
-flattened = [num for row in matrix for num in row]
-print(flattened)
+# flattened = [num for row in matrix for num in row]
+# print(flattened)
 
- ### Dictionary Comprehensions...
-      -> zip() function to zip the two lists into tuple pairs
- ### Set Comprehension...
-
-
-a = []
-print(sum(a))  # 0
-
-func(fargs, *args, **kwargs)  # ORDER
-
-a = {'name': 'zayy', 'last_name': 'baaaayz', 'middle_name': 'haiz'}
-a_a = {'name': 'zayy', 'last_name': 'baaaayz'}
-b = {'name': 'zayy', 'last_name': 'baaaayz', 'middle_name': 'haiz', 'donk': 'donk'}
-c = {1: 'zayy', 'last_name': 'baaaayz', 'middle_name': 'haiz'}
+#  ### Dictionary Comprehensions...
+#       -> zip() function to zip the two lists into tuple pairs
+#  ### Set Comprehension...
 
 
-# print(**a)  # TypeError: 'name' is an invalid keyword argument for print()
+# a = []
+# print(sum(a))  # 0
 
-def some_func(last_name=None, middle_name=None, name=None):
-    print(f'{name}, mid: {middle_name}, last: {last_name}')
+# func(fargs, *args, **kwargs)  # ORDER
 
-
-some_func(**a)  # zayy, mid: haiz, last: baaaayz
-some_func(**a_a)  # zayy, mid: None, last: baaaayz
-# some_func(**b)  # TypeError: some_func() got an unexpected keyword argument 'donk'
-# some_func(**c)  # TypeError: keywords must be strings
-
-my_dict = {'Peter': 21, 'George': 18, 'John': 45}
-sorted_dict1 = dict(sorted(my_dict.items(), key=lambda x: x[0]))
-sorted_dict2 = sorted(my_dict.items(), key=lambda x: x[0])  # List of tuples (each with 2 elements)
-print(sorted_dict1)
-print(sorted_dict2)
-
-coll_3 = sorted([el[1] for el in sorted_dict2])
-print(coll_3)
-
-print('--------')
-print(sorted_dict1.items())  # dict_items([('George', 18), ('John', 45), ('Peter', 21)])
-print(sorted_dict1.keys())
-print(sorted_dict1.values())
-
-def factorial(n):
-    if n == 1:  # Base case
-        return 1
-    return n * factorial(n - 1)  # Recursive case
+# a = {'name': 'zayy', 'last_name': 'baaaayz', 'middle_name': 'haiz'}
+# a_a = {'name': 'zayy', 'last_name': 'baaaayz'}
+# b = {'name': 'zayy', 'last_name': 'baaaayz', 'middle_name': 'haiz', 'donk': 'donk'}
+# c = {1: 'zayy', 'last_name': 'baaaayz', 'middle_name': 'haiz'}
 
 
-def recursive_power(x, y):
-    result = 1
-    if y == 0:
-        return result
-    result = x * recursive_power(x, y - 1)
-    return result
+# # print(**a)  # TypeError: 'name' is an invalid keyword argument for print()
 
-file = open('py.txt', 'w')
-# Creates or open the file
-
-file.write("This is the write command.\n")
-file.write("This is too!!!")
-file.close()
-file1 = open('py_append.txt', 'a')
-# Creates or open the file
-
-file1.write("This is the write command.\n")
-file1.write("This is too!!!\n")
-file1.close()
-
-import os
-
-file_path = "py.txt"
-if os.path.exists(file_path):
-    os.remove(file_path)
-file_path = "py_append.txt"
-if os.path.exists(file_path):
-    os.remove(file_path)
-file_path = "python.txt"
-if os.path.exists(file_path):
-    os.remove(file_path)
-try:
-    os.remove('ala_bala.txt')
-except FileNotFoundError:
-    print("File already deleted!")
+# def some_func(last_name=None, middle_name=None, name=None):
+#     print(f'{name}, mid: {middle_name}, last: {last_name}')
 
 
-class MyCustomError(Exception):  # Derived from the Exception class
-    pass
+# some_func(**a)  # zayy, mid: haiz, last: baaaayz
+# some_func(**a_a)  # zayy, mid: None, last: baaaayz
+# # some_func(**b)  # TypeError: some_func() got an unexpected keyword argument 'donk'
+# # some_func(**c)  # TypeError: keywords must be strings
+
+# my_dict = {'Peter': 21, 'George': 18, 'John': 45}
+# sorted_dict1 = dict(sorted(my_dict.items(), key=lambda x: x[0]))
+# sorted_dict2 = sorted(my_dict.items(), key=lambda x: x[0])  # List of tuples (each with 2 elements)
+# print(sorted_dict1)
+# print(sorted_dict2)
+
+# coll_3 = sorted([el[1] for el in sorted_dict2])
+# print(coll_3)
+
+# print('--------')
+# print(sorted_dict1.items())  # dict_items([('George', 18), ('John', 45), ('Peter', 21)])
+# print(sorted_dict1.keys())
+# print(sorted_dict1.values())
+
+# def factorial(n):
+#     if n == 1:  # Base case
+#         return 1
+#     return n * factorial(n - 1)  # Recursive case
 
 
-raise MyCustomError  # Raising MyCustomError
+# def recursive_power(x, y):
+#     result = 1
+#     if y == 0:
+#         return result
+#     result = x * recursive_power(x, y - 1)
+#     return result
+
+# file = open('py.txt', 'w')
+# # Creates or open the file
+
+# file.write("This is the write command.\n")
+# file.write("This is too!!!")
+# file.close()
+# file1 = open('py_append.txt', 'a')
+# # Creates or open the file
+
+# file1.write("This is the write command.\n")
+# file1.write("This is too!!!\n")
+# file1.close()
+
+# import os
+
+# file_path = "py.txt"
+# if os.path.exists(file_path):
+#     os.remove(file_path)
+# file_path = "py_append.txt"
+# if os.path.exists(file_path):
+#     os.remove(file_path)
+# file_path = "python.txt"
+# if os.path.exists(file_path):
+#     os.remove(file_path)
+# try:
+#     os.remove('ala_bala.txt')
+# except FileNotFoundError:
+#     print("File already deleted!")
+
+
+# class MyCustomError(Exception):  # Derived from the Exception class
+#     pass
+
+
+# raise MyCustomError  # Raising MyCustomError
+
