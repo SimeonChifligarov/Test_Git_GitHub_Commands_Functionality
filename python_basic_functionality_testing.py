@@ -583,100 +583,101 @@
 # person_two = Person('Natasha', 36)
 # print(person_one > person_two)  # False
 # 
-
-ll = [1, 2, 3, 4, 5, 6]
-
-
-# print(ll.__next__())  # AttributeError: 'list' object has no attribute '__next__'
-# print(next(ll))  # TypeError: 'list' object is not an iterator
-
-my_iter = iter(ll)
-my_iter2 = ll.__iter__()
-print(my_iter == my_iter2)  # False
-print(my_iter.__iter__())  # <list_iterator object at 0x00000254364F6140>
-print('------')
-print(my_iter.__next__())  # 1
-print(next(my_iter2))  # 1
-
-# list  # just checking builtins.py signature
-
-iterable = 1, 2, 3, 4, 5, 6
-print(iterable)  # (1, 2, 3, 4, 5, 6)
-print(type(iterable))  # <class 'tuple'>
-
-iter_obj = iter(iterable)
-while True:
-    try:
-        element = next(iter_obj)  # get the next item
-        # do something with element
-        print(element)
-    except StopIteration:
-        # if StopIteration is raised, break from loop
-        break
-
-
-class custom_range:
-    def __init__(self, start, end):
-        self.i = start
-        self.n = end
-
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        if self.i <= self.n:
-            i = self.i
-            self.i += 1
-            return i
-        else:
-            raise StopIteration()
-
-
-one_to_ten = custom_range(1, 10)
-for num in one_to_ten:
-    print(num)
-
-# 1... 10
-
-def first_n(n):
-    num = 0
-    while num < n:
-        yield num
-        num += 1
-
-
-sum_first_n = sum(first_n(5))
-print(sum_first_n)
-
-# Initialize the list
-my_list = [1, 3, 6, 10]
-
-# square each term using list comprehension
-print([x ** 2 for x in my_list])  # Output: [1, 9, 36, 100]
-
-# same thing can be done using generator expression
-print((x ** 2 for x in my_list))  # Output: <generator object <genexpr> at 0x0000024CF0C95C40>
-
-print(sum([x ** 2 for x in my_list]))  # 146
-print(sum((x ** 2 for x in my_list)))  # 146
-print(sum([x ** 2 for x in my_list]) == sum((x ** 2 for x in my_list)))  # True
-
-def squares(n):
-    i = 1
-    while i <= n:
-        yield i * i
-        i += 1
-
-
-print(list(squares(5)))  # [1, 4, 9, 16, 25]
-
-
-def genrange(start, end):
-    i = start
-    n = end
-    while i <= n:
-        yield i
-        i += 1
-
-
-print(list(genrange(1, 10)))  # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# 
+# ll = [1, 2, 3, 4, 5, 6]
+# 
+# 
+# # print(ll.__next__())  # AttributeError: 'list' object has no attribute '__next__'
+# # print(next(ll))  # TypeError: 'list' object is not an iterator
+# 
+# my_iter = iter(ll)
+# my_iter2 = ll.__iter__()
+# print(my_iter == my_iter2)  # False
+# print(my_iter.__iter__())  # <list_iterator object at 0x00000254364F6140>
+# print('------')
+# print(my_iter.__next__())  # 1
+# print(next(my_iter2))  # 1
+# 
+# # list  # just checking builtins.py signature
+# 
+# iterable = 1, 2, 3, 4, 5, 6
+# print(iterable)  # (1, 2, 3, 4, 5, 6)
+# print(type(iterable))  # <class 'tuple'>
+# 
+# iter_obj = iter(iterable)
+# while True:
+#     try:
+#         element = next(iter_obj)  # get the next item
+#         # do something with element
+#         print(element)
+#     except StopIteration:
+#         # if StopIteration is raised, break from loop
+#         break
+# 
+# 
+# class custom_range:
+#     def __init__(self, start, end):
+#         self.i = start
+#         self.n = end
+# 
+#     def __iter__(self):
+#         return self
+# 
+#     def __next__(self):
+#         if self.i <= self.n:
+#             i = self.i
+#             self.i += 1
+#             return i
+#         else:
+#             raise StopIteration()
+# 
+# 
+# one_to_ten = custom_range(1, 10)
+# for num in one_to_ten:
+#     print(num)
+# 
+# # 1... 10
+# 
+# def first_n(n):
+#     num = 0
+#     while num < n:
+#         yield num
+#         num += 1
+# 
+# 
+# sum_first_n = sum(first_n(5))
+# print(sum_first_n)
+# 
+# # Initialize the list
+# my_list = [1, 3, 6, 10]
+# 
+# # square each term using list comprehension
+# print([x ** 2 for x in my_list])  # Output: [1, 9, 36, 100]
+# 
+# # same thing can be done using generator expression
+# print((x ** 2 for x in my_list))  # Output: <generator object <genexpr> at 0x0000024CF0C95C40>
+# 
+# print(sum([x ** 2 for x in my_list]))  # 146
+# print(sum((x ** 2 for x in my_list)))  # 146
+# print(sum([x ** 2 for x in my_list]) == sum((x ** 2 for x in my_list)))  # True
+# 
+# def squares(n):
+#     i = 1
+#     while i <= n:
+#         yield i * i
+#         i += 1
+# 
+# 
+# print(list(squares(5)))  # [1, 4, 9, 16, 25]
+# 
+# 
+# def genrange(start, end):
+#     i = start
+#     n = end
+#     while i <= n:
+#         yield i
+#         i += 1
+# 
+# 
+# print(list(genrange(1, 10)))  # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# 
