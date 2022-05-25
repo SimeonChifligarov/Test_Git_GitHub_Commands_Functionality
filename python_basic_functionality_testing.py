@@ -467,118 +467,119 @@
 # raise MyCustomError  # Raising MyCustomError
 
 
-class Person:
-    def __init__(self):
-        self.first_name = 'Onzi'
-        self.last_name = 'Tamm'
-
-    def __full_name(self):
-        return f'{self.first_name} {self.last_name}'
-
-    def info(self):
-        return self.__full_name()
-
-
-person = Person()
-print(person.info())  # Onzi Tamm
-# print(person.__full_name())  # AttributeError: 'Person' object has no attribute '__full_name'
-print(person._Person__full_name())  # Onzi Tamm
-print('-------')
-print(person.__dict__)
-print(person.__class__)
-print(person.__class__.__dict__)
-print(Person.__dict__ == person.__class__.__dict__)  # True
-
-
-class Person:
-    def __init__(self, name):
-        self.name = name
-
-    # def __getattr__(self, attr):
-    #     return f'sorry, no "{attr}" attribute found here ;-('
-
-
-person = Person('Pete')
-print(getattr(person, 'name'))  # Pete
-
-## before def __getattr__ is defined
-print(getattr(person, 'age'))  # AttributeError: 'Person' object has no attribute 'age'
-print(getattr(person, 'age', 'None'))  # None
-
-## after def __getattr__ is defined
-print(getattr(person, 'age'))  # 'sorry, no "age" attribute found here ;-('
-print(getattr(person, 'age', 'None'))  # 'sorry, no "age" attribute found here ;-('
-
-print(hasattr(person, 'name'))  # True
-print(hasattr(person, 'age'))  # False
-## after def __getattr__ is defined
-print(hasattr(person, 'name'))  # True
-print(hasattr(person, 'age'))  # True
-
-person = Person('Pete')
-print(person.name)  # Pete
-
-print(setattr(person, 'name', 'George'))  # None
-print(person.name)  # George
-print(setattr(person, 'age', 21))  # None
-print(person.age)  # 21
-
-class Phone:
-    def __setattr__(self, attr, value):
-        self.__dict__[attr] = value.upper()
-
-
-phone = Phone()
-phone.color = 'black'
-print(phone.color)  # BLACK
-
-class Person:
-    def __init__(self, name):
-        self.name = name
-
-
-person = Person('Pete')
-print(person.name)  # Pete
-print(delattr(person, 'name'))  # None
-# print(person.name)  # AttributeError: 'Person' object has no attribute 'name'
-
-class Phone:
-    def __delattr__(self, attr):
-        del self.__dict__[attr]
-        print(f"'{str(attr)}' was deleted")
-
-
-phone = Phone()
-phone.color = 'black'
-del phone.color  # 'color' was deleted
-
-class Purchase:
-    def __init__(self, product_name, cost):
-        self.product_name = product_name
-        self.cost = cost
-
-    def __add__(self, other):
-        name = f'{self.product_name}, {other.product_name}'
-        cost = self.cost + other.cost
-        return Purchase(name, cost)
-
-    def __str__(self):
-        return f'{self.product_name}, {self.cost}'
-
-
-first_purchase = Purchase('sofa', 650)
-second_purchase = Purchase('table', 150)
-print(first_purchase + second_purchase)  # sofa, table, 800
-
-class Person:
-    def __init__(self, name, salary):
-        self.name = name
-        self.salary = salary
-
-    def __gt__(self, other):
-        return self.salary > other.salary
-
-
-person_one = Person('John', 20)
-person_two = Person('Natasha', 36)
-print(person_one > person_two)  # False
+# class Person:
+#     def __init__(self):
+#         self.first_name = 'Onzi'
+#         self.last_name = 'Tamm'
+# 
+#     def __full_name(self):
+#         return f'{self.first_name} {self.last_name}'
+# 
+#     def info(self):
+#         return self.__full_name()
+# 
+# 
+# person = Person()
+# print(person.info())  # Onzi Tamm
+# # print(person.__full_name())  # AttributeError: 'Person' object has no attribute '__full_name'
+# print(person._Person__full_name())  # Onzi Tamm
+# print('-------')
+# print(person.__dict__)
+# print(person.__class__)
+# print(person.__class__.__dict__)
+# print(Person.__dict__ == person.__class__.__dict__)  # True
+# 
+# 
+# class Person:
+#     def __init__(self, name):
+#         self.name = name
+# 
+#     # def __getattr__(self, attr):
+#     #     return f'sorry, no "{attr}" attribute found here ;-('
+# 
+# 
+# person = Person('Pete')
+# print(getattr(person, 'name'))  # Pete
+# 
+# ## before def __getattr__ is defined
+# print(getattr(person, 'age'))  # AttributeError: 'Person' object has no attribute 'age'
+# print(getattr(person, 'age', 'None'))  # None
+# 
+# ## after def __getattr__ is defined
+# print(getattr(person, 'age'))  # 'sorry, no "age" attribute found here ;-('
+# print(getattr(person, 'age', 'None'))  # 'sorry, no "age" attribute found here ;-('
+# 
+# print(hasattr(person, 'name'))  # True
+# print(hasattr(person, 'age'))  # False
+# ## after def __getattr__ is defined
+# print(hasattr(person, 'name'))  # True
+# print(hasattr(person, 'age'))  # True
+# 
+# person = Person('Pete')
+# print(person.name)  # Pete
+# 
+# print(setattr(person, 'name', 'George'))  # None
+# print(person.name)  # George
+# print(setattr(person, 'age', 21))  # None
+# print(person.age)  # 21
+# 
+# class Phone:
+#     def __setattr__(self, attr, value):
+#         self.__dict__[attr] = value.upper()
+# 
+# 
+# phone = Phone()
+# phone.color = 'black'
+# print(phone.color)  # BLACK
+# 
+# class Person:
+#     def __init__(self, name):
+#         self.name = name
+# 
+# 
+# person = Person('Pete')
+# print(person.name)  # Pete
+# print(delattr(person, 'name'))  # None
+# # print(person.name)  # AttributeError: 'Person' object has no attribute 'name'
+# 
+# class Phone:
+#     def __delattr__(self, attr):
+#         del self.__dict__[attr]
+#         print(f"'{str(attr)}' was deleted")
+# 
+# 
+# phone = Phone()
+# phone.color = 'black'
+# del phone.color  # 'color' was deleted
+# 
+# class Purchase:
+#     def __init__(self, product_name, cost):
+#         self.product_name = product_name
+#         self.cost = cost
+# 
+#     def __add__(self, other):
+#         name = f'{self.product_name}, {other.product_name}'
+#         cost = self.cost + other.cost
+#         return Purchase(name, cost)
+# 
+#     def __str__(self):
+#         return f'{self.product_name}, {self.cost}'
+# 
+# 
+# first_purchase = Purchase('sofa', 650)
+# second_purchase = Purchase('table', 150)
+# print(first_purchase + second_purchase)  # sofa, table, 800
+# 
+# class Person:
+#     def __init__(self, name, salary):
+#         self.name = name
+#         self.salary = salary
+# 
+#     def __gt__(self, other):
+#         return self.salary > other.salary
+# 
+# 
+# person_one = Person('John', 20)
+# person_two = Person('Natasha', 36)
+# print(person_one > person_two)  # False
+# 
