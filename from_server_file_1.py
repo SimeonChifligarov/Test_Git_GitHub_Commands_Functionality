@@ -6,3 +6,6 @@ some_var_4 = 4
 some_var_5 = 5
 some_var_6 = 6
 some_var_7 = 7
+some_var_8 = 8
+some_var_9 = 9
+some_var_10 = 10
