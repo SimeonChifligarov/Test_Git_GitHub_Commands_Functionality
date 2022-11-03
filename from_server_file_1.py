@@ -9,3 +9,5 @@ some_var_7 = 7
 some_var_8 = 8
 some_var_9 = 9
 some_var_10 = 10
+some_var_11 = 11
+some_var_12 = 12
